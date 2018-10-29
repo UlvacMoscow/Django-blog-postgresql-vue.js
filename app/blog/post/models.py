@@ -1,5 +1,6 @@
 from django.db import models
 from django.contrib.auth import get_user_model
+User = get_user_model()
 
 
 class Category(models.Model):
@@ -39,12 +40,13 @@ class News(models.Model):
         on_delete=models.CASCADE)
     category = models.ForeignKey(
         Category,
-        verbose_name="Category"
+        verbose_name="Category",
         on_delete=models.SET_NULL,
         null=True)
     title = models.CharField("title", max_length=100)
     text_min = models.TextField("min chars", max_length=350)
     text = models.TextField("Text news")
+    tags = models.ManyToManyField(Tag, verbose_name="Tags")
     created = models.DateTimeField("Date created", auto_now_add=True)
     description = models.CharField("Info", max_length=100)
     keywords = models.CharField("keywords", max_length=50)
