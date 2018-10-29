@@ -2,6 +2,19 @@ from django.db import models
 from django.contrib.auth import get_user_model
 
 
+class Category(models.Model):
+    """ Класс категорий
+    """
+    title = models.CharField("Name category", max_length=50)
+
+    class Meta:
+        verbose_name = "Category"
+        verbose_name_plural = "Categories"
+
+    def __str__(self):
+        return self.title
+
+
 class News(models.Model):
     """ Класс новостей
     """
