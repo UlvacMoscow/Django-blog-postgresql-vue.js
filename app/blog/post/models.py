@@ -33,8 +33,15 @@ class Tag(models.Model):
 class News(models.Model):
     """ Класс новостей
     """
-    user = models.ForeignKey(User, verbose_name="Author")
-    category = models.ForeignKey(Category, verbose_name="Category")
+    user = models.ForeignKey(
+        User,
+        verbose_name="Author",
+        on_delete=models.CASCADE)
+    category = models.ForeignKey(
+        Category,
+        verbose_name="Category"
+        on_delete=models.SET_NULL,
+        null=True)
     title = models.CharField("title", max_length=100)
     text_min = models.TextField("min chars", max_length=350)
     text = models.TextField("Text news")
