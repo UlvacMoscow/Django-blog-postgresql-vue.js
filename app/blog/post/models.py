@@ -15,6 +15,21 @@ class Category(models.Model):
         return self.title
 
 
+
+class Tag(models.Model):
+    """ Класс тэгов
+    """
+    title = models.CharField("Name tag", max_length=50)
+
+    class Meta:
+        verbose_name = "Tag"
+        verbose_name_plural = "Tags"
+
+    def __str__(self):
+        return self.title
+
+
+
 class News(models.Model):
     """ Класс новостей
     """
