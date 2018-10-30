@@ -1,5 +1,5 @@
 from django.contrib import admin
-from news.models import News, Category, Tags
+from post.models import News, Category, Tag
 
 
 admin.site.register(News)
