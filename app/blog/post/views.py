@@ -7,9 +7,10 @@ def news_list(request):
     """ выводит все новости
     """
     news = News.objects.all()
-    return render(request, "news/news_list.html", {"news": news})
+    return render(request, "post/news_list.html", {"news": news})
 
 
-def news_single(request, pk):
+def new_single(request, pk):
+    """ Вывод статьи """
     new = get_object_or_404(News, id=pk)
-    return render(request, "news/new_single.html", {"news": new})
+    return render(request, "post/new_single.html", {"new": new})
