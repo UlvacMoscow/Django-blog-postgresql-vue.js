@@ -1,3 +1,15 @@
+{% extends 'post/base.html' %}
+
+{% block desc %}{{ new.description }}{% endblock desc %}
+{% block keywords %}{{ new.keywords }}{% endblock keywords %}
+{% block title %}{{ new.title }}{% endblock title %}
+
+{% block content %}
+
 
 <h1>{{ new.title }}</h1>
-<p>{{ new.text }}</p>
+<p>{{ new.text }}</p><hr>
+
+{{ new.user }} - {{ new.created }}
+
+{% endblock content %}
