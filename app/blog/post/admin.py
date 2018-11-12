@@ -13,7 +13,7 @@ admin.site.register(Tag)
 
 
 class CommentAdmin(admin.ModelAdmin):
-    list_display = ("User", "New", "created", "moderation")
+    list_display = ("user", "new", "created", "moderation")
 
 admin.site.register(Comments, CommentAdmin)
 # Register your models here.
