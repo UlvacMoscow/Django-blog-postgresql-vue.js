@@ -57,3 +57,27 @@ class News(models.Model):
 
     def __str__(self):
         return self.title
+
+
+class Comments(models.Model):
+    """ Класс комментариев к новостям
+    """
+    user = models.ForeignKey(
+    User,
+    verbose_name="User",
+    on_delete=models.CASCADE
+    )
+    new = models.ForeignKey(
+    News,
+    verbose_name="News",
+    on_delete=models.CASCADE
+    )
+    text = models.TextField("Comment")
+
+
+    class Meta:
+        verbose_name = "Comment"
+        verbose_name_plural = "Comments"
+
+    def __str__(self):
+        return "{}".format(self.user)
