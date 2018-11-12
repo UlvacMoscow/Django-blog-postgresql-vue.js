@@ -73,6 +73,8 @@ class Comments(models.Model):
     on_delete=models.CASCADE
     )
     text = models.TextField("Comment")
+    created = models.DateTimeField("Data of created", auto_now_add=True, null=True)
+    moderation = models.BooleanField(default=False)
 
 
     class Meta:

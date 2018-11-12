@@ -11,5 +11,9 @@ admin.site.register(News, NewsAdmin)
 admin.site.register(Category)
 admin.site.register(Tag)
 
+
+class CommentAdmin(admin.ModelAdmin):
+    list_display = ("User", "New", "created", "moderation")
+
 admin.site.register(Comments)
 # Register your models here.
