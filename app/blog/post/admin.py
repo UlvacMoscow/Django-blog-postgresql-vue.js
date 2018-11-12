@@ -4,7 +4,7 @@ from django_summernote.admin import SummernoteModelAdmin
 
 
 class NewsAdmin(SummernoteModelAdmin):
-    summernote_fields = ('text', 'text_min', )
+    summernote_fields = ('text', 'text_min')
 
 
 admin.site.register(News, NewsAdmin)
@@ -15,5 +15,5 @@ admin.site.register(Tag)
 class CommentAdmin(admin.ModelAdmin):
     list_display = ("User", "New", "created", "moderation")
 
-admin.site.register(Comments)
+admin.site.register(Comments, CommentAdmin)
 # Register your models here.

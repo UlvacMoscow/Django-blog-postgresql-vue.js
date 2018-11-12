@@ -74,7 +74,7 @@ class Comments(models.Model):
     )
     text = models.TextField("Comment")
     created = models.DateTimeField("Data of created", auto_now_add=True, null=True)
-    moderation = models.BooleanField(default=False)
+    moderation = models.BooleanField("Moderation", default=False)
 
 
     class Meta:
