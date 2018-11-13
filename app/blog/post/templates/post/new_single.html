@@ -7,9 +7,15 @@
 {% block content %}
 
 
-<h1>{{ new.title }}</h1>
-<p>{{ new.text|safe }}</p><hr>
+    <h1>{{ new.title }}</h1>
+    <p>{{ new.text|safe }}</p><hr>
 
-{{ new.user }} - {{ new.created }}
+    Автор: {{ new.user }} - {{ new.created }}
+
+    {% for comment in comments %}
+        Пользователь - {{ comment.user }} <br>
+        {{ comment.text }}
+        Добавлен - {{ comment.created }}
+    {% endfor %}
 
 {% endblock content %}
