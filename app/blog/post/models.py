@@ -83,3 +83,12 @@ class Comments(models.Model):
 
     def __str__(self):
         return "{}".format(self.user)
+
+
+class Post(models.Model):
+    title = models.CharField('title', max_length=50)
+    body = models.TextField('body post')
+    created = models.DateTimeField("Data of created", auto_now_add=True, null=True)
+
+    def __str__(self):
+        return self.title

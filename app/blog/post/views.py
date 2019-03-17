@@ -1,6 +1,10 @@
 from django.shortcuts import render, get_object_or_404
 from post.models import News, Comments
 from post.forms import CommentForm
+from django.views.generic import DetailView, ListView, UpdateView, CreateView
+
+from .models import Post
+from .forms import PostForm
 
 
 
@@ -21,3 +25,22 @@ def new_single(request, pk):
                 {"new": new,
                 "comments": comment
                 })
+
+
+
+class PostListView(ListView):
+    model = Post
+
+
+class PostCreateView(CreateView):
+    model = Post
+    form_class = PostForm
+
+
+class PostDetailView(DetailView):
+    model = Post
+
+
+class PostUpdateView(UpdateView):
+    model = Post
+    form_class = PostForm
