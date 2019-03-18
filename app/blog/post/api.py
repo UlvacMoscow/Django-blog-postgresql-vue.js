@@ -4,6 +4,7 @@ from . import serializers
 from rest_framework import viewsets, permissions, status
 from rest_framework.response import Response
 from rest_framework.decorators import api_view
+from rest_framework.views import APIView
 
 
 
@@ -41,8 +42,15 @@ def api_post_detail(request, pk):
     elif request.method == 'DELETE':
         post.delete()
         return REsponse(status=status.HTTP_204_NO_CONTENT)
-# class PostViewSet(viewsets.ModelViewSet):
-#     """ViewSet for the Post class"""
+
+class PostViewSet(APIView):
+    """ViewSet for the Post class"""
+    def post(self, request):
+        serialaizer=serializers.PostSerializer(data=request.data)
+        if serialaizer.is_valid():
+            serialaizer.save()
+            return Response(serialaizer.data, status=status.HTTP_201_CREATED)
+        return Response(serialaizer.errors, status=status.HTTP_400_BAD_REQUEST)
 
     # queryset = models.Post.objects.all()
     # serializer_class = serializers.PostSerializer

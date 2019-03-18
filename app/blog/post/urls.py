@@ -16,6 +16,7 @@ urlpatterns = (
     path('api/api_post/', api.api_post),
     path('api/post_add/', api.add_post),
     path('api/api_post_detail/<int:pk>/', api.api_post_detail),
+    path('api/class_post/',api.PostViewSet.as_view())
 )
 
 urlpatterns += (
