@@ -1,7 +1,7 @@
 from django.http import JsonResponse
 from . import models
 from . import serializers
-from rest_framework import viewsets, permissions
+from rest_framework import viewsets, permissions, status
 from rest_framework.response import Response
 from rest_framework.decorators import api_view
 
@@ -23,7 +23,24 @@ def add_post(request):
             serializer.save()
             return Response(serializer.data, status=status.HTTP_201_CREATED)
         else:
-            return Response(serializer.error, status=status.HTTP_400_REQUEST)
+            return Response(serializer.errors, status=status.HTTP_400_REQUEST)
+
+
+@api_view(['GET', 'PUT', 'PATCH', 'DELETE'])
+def api_post_detail(request, pk):
+    post = models.Post.objects.get(pk=pk)
+    if request.method == 'GET':
+        serialaizer = serializers.PostSerializer(post)
+        return Response(serialaizer.data)
+    elif request.method == 'PUT' or request.method == 'PATCH':
+        serialaizer = serializers.PostSerializer(post, data=request.data)
+        if serialaizer.is_valid():
+            serialaizer.save()
+            return Response(serialaizer.data)
+        return Response(serialaizer.errors, status=status.HTTP_400_BAD_REQUEST)
+    elif request.method == 'DELETE':
+        post.delete()
+        return REsponse(status=status.HTTP_204_NO_CONTENT)
 # class PostViewSet(viewsets.ModelViewSet):
 #     """ViewSet for the Post class"""
 

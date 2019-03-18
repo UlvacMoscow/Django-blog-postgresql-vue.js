@@ -15,6 +15,7 @@ urlpatterns = (
     # urls for Django Rest Framework API
     path('api/api_post/', api.api_post),
     path('api/post_add/', api.add_post),
+    path('api/api_post_detail/<int:pk>/', api.api_post_detail),
 )
 
 urlpatterns += (
